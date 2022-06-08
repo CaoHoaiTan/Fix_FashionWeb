@@ -97,7 +97,9 @@
           Liên hệ hợp tác
         </h4>
 
-        <form>
+        <form method="post">
+          <input type="hidden" name="anticsrf" value="<c:out value='${csrfPreventionSalt}'/>"/>
+
           <div class="wrap-input1 w-full p-b-4">
             <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="n3t@gmail.com">
             <div class="focus-input1 trans-04"></div>

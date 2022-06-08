@@ -145,6 +145,7 @@
 					class="d-flex flex-column flex-md-row justify-content-between mb-5">
 				<section>
 					<form action="edituserinfo" method="post">
+						<input type="hidden" name="anticsrf" value="<c:out value='${csrfPreventionSalt}'/>"/>
 						<!-- -->
 						<label>Họ và tên:</label>
 						<input type="text" required="" value="${info.hoTen }" name="hoten">
@@ -171,6 +172,8 @@
 			<h2 class="mb-5">Thay đổi mật khẩu</h2>
 			<form action="edituserpassword" onsubmit="return checkPassword()"
 				  method="post">
+				<input type="hidden" name="anticsrf" value="<c:out value='${csrfPreventionSalt}'/>"/>
+
 				<label>Mật khẩu cũ:</label> <input type="password" required=""
 												   placeholder="OldPassword"  name="oldpassword" />
 				<br>

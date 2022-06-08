@@ -41,6 +41,7 @@
     <div class="dis-none panel-search w-full p-t-10 p-b-15">
         <div class="bor8 dis-flex p-l-15">
             <form action ="${pageContext.request.contextPath}/SearchControll">
+                <input type="hidden" name="anticsrf" value="<c:out value='${csrfPreventionSalt}'/>"/>
                 <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04" type="submit">
                     <i class="zmdi zmdi-search"></i>
                 </button>

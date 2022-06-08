@@ -40,6 +40,7 @@ public class MyUtils {
 		Users loginedUser = (Users) session.getAttribute("loginedUser");
 		return loginedUser;
 	}
+
 	// Lưu trữ thông tin giỏ hàng vào Session.
 	public static void storeUserCart(HttpSession session, List<ChiTietGioHang> userCart) {
 		// Trên JSP có thể truy cập thông qua ${loginedUser}
@@ -79,5 +80,17 @@ public class MyUtils {
 		// 0 giây. (Cookie này sẽ hết hiệu lực ngay lập tức)
 		cookieUserName.setMaxAge(0);
 		response.addCookie(cookieUserName);
+	}
+	//Store number login fail to session
+	public static void storeLoginFail(HttpSession session, int numLoginFail) {
+		session.setAttribute("numLoginFail", numLoginFail);
+	}
+	public static int getLoginFail(HttpSession session) {
+		//check if session is null set = 0
+		if(session.getAttribute("numLoginFail") == null) {
+			return 0;
+		}
+		int numLoginFail = (int) session.getAttribute("numLoginFail");
+		return numLoginFail;
 	}
 }

@@ -57,6 +57,7 @@
 <!--Sign up-->
 <section>
     <form action="signUp" onsubmit="return checkPassword()" method="post">
+        <input type="hidden" name="anticsrf" value="<c:out value='${csrfPreventionSalt}'/>"/>
         <h2>Đăng ký tài khoản</h2>
         <!-- -->
         <label>Họ và tên:</label>
@@ -80,6 +81,7 @@
         <label>Nhập lại mật khẩu:</label>
         <input type="password" placeholder="Password" required="" id="cpassword"/>
         <span style="color: rgb(238, 17, 17);" id="message_error"></span>
+        <span style="color: rgb(28,206,57);" id="message_success"></span>
         <br>
         <input id="submit" type="submit" name="submit" value="Đăng ký">
     </form>
@@ -98,6 +100,34 @@
 <!--===============================================================================================-->
 <!--Funtion-->
 <script type="text/javascript">
+<%--    check password when type--%>
+    document.getElementById("password").onkeyup = function () {
+        var format = /[!@#$%^&*()_+\-=\[\]{}:\\|,.<>\/?]+/;
+        var formatAlphabetCap = /[ABCDEFGHIJKLMNOPQRSTUVWXYZ]+/;
+        var formatAlphabet = /[abcdefghijklmnopqrstuvwxyz]+/;
+        var formatNumber = /[1234567890]+/;
+        var pw = document.getElementById("password").value;
+        //check empty password field
+        if(pw == "") {
+            document.getElementById("message_error").innerHTML = "**Không để trống !";
+            document.getElementById("submit").disabled = true;
+        }else {
+            //minimum password length validation
+            if(pw.length < 8) {
+                document.getElementById("message_error").innerHTML = "**Mật khẩu tối thiểu 8 kí tự";
+                document.getElementById("submit").disabled = true;
+            }else if(format.test(pw) == false || formatAlphabetCap.test(pw) == false
+                || formatNumber.test(pw) == false || formatAlphabet.test(pw) == false) {
+                document.getElementById("message_error").innerHTML = "**Mật khẩu cần có ít nhất 1 chữ cái, 1 chữ số, 1 chữ in hoa và 1 kí tự đặc biệt";
+                document.getElementById("submit").disabled = true;
+            }else {
+                document.getElementById("message_error").outerHTML = "";
+                document.getElementById("message_success").innerHTML = "Mật khẩu an toàn"
+                document.getElementById("submit").disabled = false;
+            }
+        }
+    }
+
     function checkPassword() {
         var fpw = document.getElementById("password").value;
         var spw = document.getElementById("cpassword").value;
@@ -107,7 +137,6 @@
             return false;
         }
         return true;
-
     }
 </script>
 <!--===============================================================================================-->

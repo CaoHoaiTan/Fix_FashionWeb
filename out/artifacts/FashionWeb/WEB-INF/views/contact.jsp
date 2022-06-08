@@ -58,6 +58,7 @@
         <div class="flex-w flex-tr">
             <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
                 <form action="mailto:trung@gmail.com">
+                    <input type="hidden" name="anticsrf" value="<c:out value='${csrfPreventionSalt}'/>"/>
                     <h4 class="mtext-105 cl2 txt-center p-b-30">
                         Gửi tin nhắn đến chúng tôi
                     </h4>

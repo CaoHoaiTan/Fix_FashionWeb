@@ -24,6 +24,7 @@
             <div class="login_form">
                 <h1>Đăng nhập</h1>
                 <form action="signIn" method="post">
+                    <input type="hidden" name="anticsrf" value="<c:out value='${csrfPreventionSalt}'/>"/>
                     <input type="text" name="username" required="" placeholder="Username">
                     <input type="password" name="password" required="" placeholder="Password">
                     <div style="display: flex;">

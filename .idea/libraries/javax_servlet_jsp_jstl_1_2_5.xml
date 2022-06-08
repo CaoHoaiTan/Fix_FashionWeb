@@ -2,6 +2,8 @@
   <library name="javax.servlet.jsp.jstl-1.2.5">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/javax.servlet.jsp.jstl-1.2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../HK6 (HK2 21-22)/Bảo mật web/Final/guava-31.1-jre.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../HK6 (HK2 21-22)/Bảo mật web/Final/commons-lang-2.6.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

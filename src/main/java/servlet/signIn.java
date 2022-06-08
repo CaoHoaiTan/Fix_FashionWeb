@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Servlet implementation class signIn
  */
@@ -46,6 +48,9 @@ public class signIn extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
+        // check number of login fail
+        HttpSession session = request.getSession();
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String errorString = null;
@@ -57,7 +62,6 @@ public class signIn extends HttpServlet {
             u = DBUtils.findUser(conn, username, password);
 
             if (u != null) {
-                HttpSession session = request.getSession();
                 MyUtils.storeLoginedUser(session, u);
 
                 // Nếu người dùng chọn tính năng "Remember me".
@@ -68,6 +72,8 @@ public class signIn extends HttpServlet {
                 else {
                     MyUtils.deleteUserCookie(response);
                 }
+                // set login fail = 0
+                MyUtils.storeLoginFail(session,0);
 
                 Users loginedUser = MyUtils.getLoginedUser(session);
                 // Tạo đối tượng Connection kết nối database.
@@ -80,12 +86,27 @@ public class signIn extends HttpServlet {
                 else
                     response.sendRedirect(request.getContextPath() + "/home");
             } else {
-                errorString = "Tên đăng nhập hoặc mật khẩu không chính xác";
-                request.setAttribute("errorString", errorString);
-                request.getRequestDispatcher("/WEB-INF/views/signIn.jsp").forward(request, response);
+                // set login fail = login fail + 1
+                MyUtils.storeLoginFail(session,MyUtils.getLoginFail(session) + 1);
+                //check number login fail > 3
+                if (MyUtils.getLoginFail(session) > 3) {
+                    MyUtils.storeLoginFail(session,0);
+                    errorString = "Tài khoản đã bị khóa. Vui lòng liên hệ quản trị viên để mở khóa.";
+                    request.setAttribute("errorString", errorString);
+                    sleep(5000);
+                    response.sendRedirect(request.getContextPath() + "/home");
+                }
+                else {
+                    errorString = "Sai tên đăng nhập hoặc mật khẩu. Vui lòng nhập lại.";
+                    request.setAttribute("errorString", errorString);
+                    request.getRequestDispatcher("/WEB-INF/views/signIn.jsp").forward(request, response);
+
+                }
             }
         } catch (SQLException | ClassNotFoundException e) {
             // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

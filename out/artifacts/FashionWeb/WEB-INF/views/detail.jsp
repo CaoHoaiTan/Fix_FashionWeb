@@ -122,7 +122,8 @@
                         <div class="p-t-33">
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-204 flex-w flex-m respon6-next">
-                                    <form action="addSpToCart" method="get">
+                                    <form action="addSpToCart" method="post">
+                                        <input type="hidden" name="anticsrf" value="<c:out value='${csrfPreventionSalt}'/>"/>
                                         <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                                             <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                                 <i class="fs-16 zmdi zmdi-minus"></i>
@@ -252,6 +253,7 @@
                                             <c:if test="${sessionScope.loginedUser.roleID==2 || sessionScope.loginedUser.roleID==3}">
                                                 <form action="deleteReview?maSP=${SP.maSP}&maCMT=${o.maCMT}"
                                                       method="post">
+                                                    <input type="hidden" name="anticsrf" value="<c:out value='${csrfPreventionSalt}'/>"/>
                                                     <input class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10"
                                                            id="submit" type="submit" name="submit"
                                                            value="Xóa bình luận">
@@ -280,6 +282,7 @@
                                     </c:forEach>
                                     <!-- Add review -->
                                     <form action="addReview?maSP=${SP.maSP}" method="post">
+                                        <input type="hidden" name="anticsrf" value="<c:out value='${csrfPreventionSalt}'/>"/>
                                         <h5 class="mtext-108 cl2 p-b-7">Add a review</h5>
 
                                         <p class="stext-102 cl6">Your email address will not be
