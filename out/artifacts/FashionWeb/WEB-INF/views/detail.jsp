@@ -275,7 +275,7 @@
                                                 </div>
                                                 <p class="stext-102 cl6">Ngày đăng: ${o.ngayDang }</p>
 
-                                                <span class="mtext-107 cl2 p-r-20">${o.noiDung}</span>
+                                                <span class="mtext-107 cl2 p-r-20"><c:out value="${o.noiDung}" escapeXml="true"/> </span>
                                             </div>
                                         </div>
 
