@@ -1,6 +1,7 @@
 package servlet;
 
 import beans.Users;
+
 import conn.ConnectionUtils;
 import utils.DBUtils;
 import utils.MyUtils;
@@ -11,6 +12,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+
 
 @WebServlet(urlPatterns = "/addReview", name = "addReview")
 public class addReview extends HttpServlet {
@@ -33,7 +35,7 @@ public class addReview extends HttpServlet {
             {
                 int maKH=a.getMaKH();
 
-                String noiDung = request.getParameter("textReview");
+                String noiDung = (request.getParameter("textReview"));
                 DBUtils.Addreview(conn, maKH,maSP,noiDung);
                 new detail().doGet(request,response);
 

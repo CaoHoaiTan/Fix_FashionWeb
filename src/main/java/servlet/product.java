@@ -34,8 +34,19 @@ public class product extends HttpServlet {
             Connection conn = MyUtils.getStoredConnection(request);
             listLoaiSP = DBUtils.getAllLoaiSP(conn);
 
-            brand = request.getParameter("brand") == null ? 0 :Integer.valueOf(request.getParameter("brand"));
-            page  = request.getParameter("page") == null ? 1 : Integer.valueOf(request.getParameter("page"));
+            if (request.getParameter("brand") != null && request.getParameter("brand").length() < 255) {
+                brand = Integer.valueOf(request.getParameter("brand"));
+            }
+            else {
+                brand = 0;
+            }
+
+            if (request.getParameter("page") != null && request.getParameter("page").length() < 255) {
+                page = Integer.valueOf(request.getParameter("page"));
+            }
+            else {
+                page = 1;
+            }
 
             if (brand != 0) {
                 listSP = DBUtils.getSanPhambymaLoaiSP(conn,String.valueOf(brand));

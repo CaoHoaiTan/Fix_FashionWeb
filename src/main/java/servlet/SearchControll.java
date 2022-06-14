@@ -47,15 +47,18 @@ public class SearchControll extends HttpServlet {
 
             listSP = SortSanPham.SearchSP(conn, search);
 
-            if(request.getParameter("brand") == null)
+            if (request.getParameter("brand") != null && request.getParameter("brand").length() < 255) {
+                brand = Integer.valueOf(request.getParameter("brand"));
+            }
+            else {
                 brand = 0;
-            else
-                brand =Integer.valueOf(request.getParameter("brand"));
+            }
 
-            if(request.getParameter("page") == null)
-                page =1;
-            else{
+            if (request.getParameter("page") != null && request.getParameter("page").length() < 255) {
                 page = Integer.valueOf(request.getParameter("page"));
+            }
+            else {
+                page = 1;
             }
 
             listLoaiSP = DBUtils.getAllLoaiSP(conn);

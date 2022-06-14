@@ -39,7 +39,6 @@ public class CookieFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession();
-
         Users userInSession = MyUtils.getLoginedUser(session);
         //
         if (userInSession != null) {
@@ -50,6 +49,7 @@ public class CookieFilter implements Filter {
 
         // Connection đã được tạo trong JDBCFilter.
         Connection conn = MyUtils.getStoredConnection(request);
+
 
         // Cờ (flag) để kiểm tra Cookie.
         String checked = (String) session.getAttribute("COOKIE_CHECKED");

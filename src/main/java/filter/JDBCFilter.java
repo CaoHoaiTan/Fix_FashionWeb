@@ -102,6 +102,7 @@ public class JDBCFilter implements Filter {
 
                 // Cho phép request đi tiếp.
                 // (Đi tới Filter tiếp theo hoặc đi tới mục tiêu).
+
                 chain.doFilter(request, response);
 
                 // Gọi phương thức commit() để hoàn thành giao dịch với DB.
@@ -119,6 +120,7 @@ public class JDBCFilter implements Filter {
         else {
             // Cho phép request đi tiếp.
             // (Đi tới Filter tiếp theo hoặc đi tới mục tiêu).
+
             chain.doFilter(request, response);
         }
 

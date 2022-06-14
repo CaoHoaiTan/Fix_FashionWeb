@@ -39,10 +39,11 @@ public class SapXep extends HttpServlet {
             minvalue = request.getParameter("minvalue") != null ? request.getParameter("minvalue") : null;
             maxvalue = request.getParameter("maxvalue") != null ? request.getParameter("maxvalue") : null;
 
-            if(request.getParameter("page") == null)
-                page =1;
-            else{
+            if (request.getParameter("page") != null && request.getParameter("page").length() < 255) {
                 page = Integer.valueOf(request.getParameter("page"));
+            }
+            else {
+                page = 1;
             }
 
             listLoaiSP = DBUtils.getAllLoaiSP(conn);

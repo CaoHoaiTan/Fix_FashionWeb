@@ -34,7 +34,16 @@ public class addSpToCart extends HttpServlet {
         if (u != null) {
             int maKH = u.getMaKH();
             int num = Integer.parseInt(request.getParameter("numSP"));
-            int maSP = Integer.parseInt(request.getParameter("maSP"));
+
+            int maSP;
+
+            if (request.getParameter("maSP") != null && request.getParameter("maSP").length() < 255) {
+                maSP = Integer.valueOf(request.getParameter("maSP"));
+            }
+            else {
+                maSP = 1;
+            }
+
             try {
                 Connection conn = MyUtils.getStoredConnection(request);
                 DBUtils.addSpToCart(conn, maKH, maSP, num);
@@ -58,6 +67,6 @@ public class addSpToCart extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+
     }
 }

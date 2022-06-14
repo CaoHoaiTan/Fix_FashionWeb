@@ -60,10 +60,12 @@ public class MyUtils {
 		// 1 ngày (Đã đổi ra giây)
 		cookieUserName.setMaxAge(24 * 60 * 60);
 		response.addCookie(cookieUserName);
+		response.setHeader("Set-Cookie", "key=value; HttpOnly; SameSite=strict");
 	}
 
 	public static String getUserNameInCookie(HttpServletRequest request) {
 		Cookie[] cookies = request.getCookies();
+
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {
 				if (ATT_NAME_USER_NAME.equals(cookie.getName())) {
