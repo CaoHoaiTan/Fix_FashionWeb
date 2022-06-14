@@ -5695,12 +5695,6 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
     fitzpatrick_scale: false,
     category: "objects"
   },
-  key: {
-    keywords: [ "lock", "door", "password" ],
-    "char": '<img data-emoticon="true" style="width:1em;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em" draggable="false" alt="\ud83d\udd11" src="1f511.png"/>',
-    fitzpatrick_scale: false,
-    category: "objects"
-  },
   old_key: {
     keywords: [ "lock", "door", "password" ],
     "char": '<img data-emoticon="true" style="width:1em;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em" draggable="false" alt="\ud83d\udddd" src="1f5dd.png"/>',
@@ -6628,12 +6622,6 @@ window.tinymce.Resource.add("tinymce.plugins.emoticons", {
   ideograph_advantage: {
     keywords: [ "chinese", "kanji", "obtain", "get", "circle" ],
     "char": '<img data-emoticon="true" style="width:1em;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em" draggable="false" alt="\ud83c\ude50" src="1f250.png"/>',
-    fitzpatrick_scale: false,
-    category: "symbols"
-  },
-  secret: {
-    keywords: [ "privacy", "chinese", "sshh", "kanji", "red-circle" ],
-    "char": '<img data-emoticon="true" style="width:1em;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em" draggable="false" alt="\u3299\ufe0f" src="3299.png"/>',
     fitzpatrick_scale: false,
     category: "symbols"
   },
