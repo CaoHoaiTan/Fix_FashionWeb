@@ -58,6 +58,7 @@ public class MyUtils {
 		System.out.println("Store user cookie");
 		Cookie cookieUserName = new Cookie(ATT_NAME_USER_NAME, user.getUserName());
 		cookieUserName.setSecure(true);
+		cookieUserName.setHttpOnly(false);
 		// 1 ngày (Đã đổi ra giây)
 		cookieUserName.setMaxAge(24 * 60 * 60);
 		response.addCookie(cookieUserName);
@@ -79,6 +80,7 @@ public class MyUtils {
 	public static void deleteUserCookie(HttpServletResponse response) {
 		Cookie cookieUserName = new Cookie(ATT_NAME_USER_NAME, null);
 		cookieUserName.setSecure(true);
+		cookieUserName.setHttpOnly(false);
 		// 0 giây. (Cookie này sẽ hết hiệu lực ngay lập tức)
 		cookieUserName.setMaxAge(0);
 		response.addCookie(cookieUserName);
