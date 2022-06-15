@@ -55,7 +55,50 @@ public class signUp extends HttpServlet {
 		String diaChi = request.getParameter("diaChi");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
+
+		// check length of hoten
+		if (hoten.length() > 255) {
+			request.setAttribute("error", "Họ tên không được vượt quá 255 ký tự");
+			request.getRequestDispatcher("/WEB-INF/views/signUp.jsp").forward(request, response);
+			return;
+		}
+
+		// check length of sdt
+		if (sdt.length() > 11) {
+			request.setAttribute("error", "Số điện thoại không được vượt quá 11 ký tự");
+			request.getRequestDispatcher("/WEB-INF/views/signUp.jsp").forward(request, response);
+			return;
+		}
+
+		// check length of ngaySinh
+		if (ngaySinh.length() > 10) {
+			request.setAttribute("error", "Ngày sinh không được vượt quá 10 ký tự");
+			request.getRequestDispatcher("/WEB-INF/views/signUp.jsp").forward(request, response);
+			return;
+		}
+
+		// check length of diaChi
+		if (diaChi.length() > 255) {
+			request.setAttribute("error", "Địa chỉ không được vượt quá 255 ký tự");
+			request.getRequestDispatcher("/WEB-INF/views/signUp.jsp").forward(request, response);
+			return;
+		}
+
+		// check length of username
+		if (username.length() > 255) {
+			request.setAttribute("error", "Tên đăng nhập không được vượt quá 255 ký tự");
+			request.getRequestDispatcher("/WEB-INF/views/signUp.jsp").forward(request, response);
+			return;
+		}
+
+		// check length of password
+		if (password.length() > 255) {
+			request.setAttribute("error", "Mật khẩu không được vượt quá 255 ký tự");
+			request.getRequestDispatcher("/WEB-INF/views/signUp.jsp").forward(request, response);
+			return;
+		}
+
+
 		Date date = Date.valueOf(ngaySinh);
 		try {
 			// Tạo đối tượng Connection kết nối database.

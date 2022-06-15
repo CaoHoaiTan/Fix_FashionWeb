@@ -12,8 +12,8 @@ public class SQLServerConnUtils {
 
     // guess connection
     public static Connection getSQLServerConnection() throws ClassNotFoundException, SQLException {
-        String userName = "guess";
-        String password = "guess";
+        String userName = "sa";
+        String password = "12345";
 
         return getSQLServerConnection(userName, password);
     }

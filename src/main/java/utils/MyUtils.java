@@ -59,8 +59,8 @@ public class MyUtils {
 		Cookie cookieUserName = new Cookie(ATT_NAME_USER_NAME, user.getUserName());
 		cookieUserName.setSecure(true);
 		cookieUserName.setHttpOnly(true);
-		// 1 ngày (Đã đổi ra giây)
-		cookieUserName.setMaxAge(24 * 60 * 60);
+		// 1h (Đã đổi ra giây)
+		cookieUserName.setMaxAge(60 * 60);
 		response.addCookie(cookieUserName);
 		response.setHeader("Set-Cookie", "key=value; HttpOnly; SameSite=strict");
 	}

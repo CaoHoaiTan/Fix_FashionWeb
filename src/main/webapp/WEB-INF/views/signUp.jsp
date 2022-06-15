@@ -57,34 +57,33 @@
 <!--Sign up-->
 <section>
     <form action="signUp" onsubmit="return checkPassword()" method="post">
-        <input type="hidden" name="anticsrf" value="<c:out value='${csrfPreventionSalt}'/>"/>
         <h2>Đăng ký tài khoản</h2>
         <!-- -->
         <label>Họ và tên:</label>
-        <input type="text" name="hoten">
+        <input type="text" name="hoten" required maxlength="30">
         <br>
         <label>Số điện thoại:</label>
-        <input type="number" name="sdt">
+        <input type="number" name="sdt" maxlength="10">
         <br>
         <label style="display:inline-block">Ngày sinh:</label>
-        <input id="dateOfBirth" type="date" name="ngaySinh" value="">
+        <input id="dateOfBirth" type="date" name="ngaySinh" value="" required maxlength="10">
         <br>
         <label>Địa chỉ:</label>
-        <input type="text" name="diaChi">
+        <input type="text" name="diaChi" required maxlength="50">
         <br>
         <label>Tên đăng nhập:</label>
-        <input type="text" placeholder="Username" name="username" required="" id="username"/>
+        <input type="text" placeholder="Username" name="username" required="" id="username" required maxlength="20"/>
         <br>
         <label>Mật khẩu:</label>
-        <input type="password" placeholder="Password" name="password" required="" id="password"/>
+        <input type="password" placeholder="Password" name="password" required="" id="password" required maxlength="20"/>
         <br>
         <label>Nhập lại mật khẩu:</label>
-        <input type="password" placeholder="Password" required="" id="cpassword"/>
+        <input type="password" placeholder="Password" required="" id="cpassword" maxlength="20"/>
         <span style="color: rgb(238, 17, 17);" id="message_error"></span>
-        <span style="color: rgb(28,206,57);" id="message_success"></span>
         <br>
         <input id="submit" type="submit" name="submit" value="Đăng ký">
     </form>
+
 </section>
 
 
